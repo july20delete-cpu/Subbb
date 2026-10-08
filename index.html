@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Teacher's Day — Ma'am Marissa</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script>setTimeout(function(){var e=document.getElementById('preloader');if(e)e.classList.add('done');},900);</script>
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-dim: #7A5E20;
+    --deep: #0A0F1E;
+    --ink: #12192E;
+    --mid: #1E2A45;
+    --pale: #F2EFE8;
+    --white: #FAFAF7;
+    --accent: #4A90D9;
+    box-sizing: border-box;
+  }
+
+  *, *::before, *::after { box-sizing: inherit; margin: 0; padding: 0; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+
+  html, body {
+    height: 100%;
+    background: var(--deep);
+    color: var(--pale);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ─── PRELOADER ─── */
+  #preloader {
+    position: fixed; inset: 0; z-index: 9999;
+    background: var(--deep);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 24px;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+  }
+  #preloader.done { opacity: 0; visibility: hidden; }
+
+  .loader-ring {
+    width: 64px; height: 64px;
+    border: 2px solid var(--gold-dim);
+    border-top-color: var(--gold);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .loader-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+  }
+
+  /* ─── PARTICLE CANVAS ─── */
+  #canvas {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  }
+
+  /* ─── HERO ─── */
+  #hero {
+    position: relative; z-index: 1;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 60px 24px 80px;
+    overflow: hidden;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid var(--gold-dim);
+    color: var(--gold);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 2px;
+    margin-bottom: 32px;
+    opacity: 0;
+    transform: translateY(12px);
+    animation: fadeUp 0.8s ease 1.2s forwards;
+  }
+
+  .hero-from {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 1.5s forwards;
+  }
+
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 8vw, 6rem);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--white);
+    opacity: 0;
+    animation: fadeUp 0.9s ease 1.7s forwards;
+  }
+
+  .hero-name span {
+    display: block;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dim));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    margin-top: 28px;
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: rgba(242,239,232,0.6);
+    line-height: 1.7;
+    max-width: 480px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 2.0s forwards;
+  }
+
+  .hero-divider {
+    margin: 40px auto;
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    opacity: 0;
+    animation: fadeIn 1s ease 2.3s forwards;
+  }
+
+  .scroll-cue {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    opacity: 0;
+    animation: pulse 2s ease 2.8s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.3; transform: translateY(0); }
+    50% { opacity: 0.8; transform: translateY(4px); }
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(20px); }
+  }
+  @keyframes fadeIn {
+    to { opacity: 1; } from { opacity: 0; }
+  }
+
+  /* ─── SECTIONS ─── */
+  section {
+    position: relative; z-index: 1;
+    padding: 96px 24px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--white);
+    margin-bottom: 28px;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  /* ─── TRIBUTE MESSAGE ─── */
+  #message {
+    background: var(--mid);
+    border-left: 2px solid var(--gold);
+    padding: 64px 48px;
+    border-radius: 0 4px 4px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #message::before {
+    content: '"';
+    position: absolute;
+    top: -20px; left: 24px;
+    font-family: 'Playfair Display', serif;
+    font-size: 12rem;
+    color: var(--gold-dim);
+    opacity: 0.15;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .message-body {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: rgba(242,239,232,0.85);
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+  }
+
+  .message-body p + p { margin-top: 20px; }
+
+  .message-sig {
+    margin-top: 36px;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    font-weight: 500;
+    text-transform: uppercase;
+    position: relative; z-index: 1;
+  }
+
+  /* ─── QUALITIES GRID ─── */
+  .qualities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2px;
+    margin-top: 48px;
+  }
+
+  .quality-card {
+    background: var(--mid);
+    padding: 36px 28px;
+    border-bottom: 1px solid var(--gold-dim);
+    transition: background 0.3s ease;
+  }
+  .quality-card:hover { background: rgba(201,168,76,0.08); }
+
+  .quality-icon {
+    font-size: 1.6rem;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .quality-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .quality-desc {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: rgba(242,239,232,0.55);
+  }
+
+  /* ─── ICT SECTION ─── */
+  #ict-section {
+    border-top: 1px solid rgba(201,168,76,0.15);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .ict-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 40px;
+  }
+
+  @media (max-width: 600px) {
+    .ict-grid { grid-template-columns: 1fr; }
+    #message { padding: 40px 24px; }
+  }
+
+  .ict-item {
+    display: flex; gap: 16px; align-items: flex-start;
+  }
+
+  .ict-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--gold-dim);
+    line-height: 1;
+    flex-shrink: 0;
+    min-width: 52px;
+  }
+
+  .ict-body { }
+
+  .ict-body strong {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .ict-body p {
+    font-size: 0.84rem;
+    line-height: 1.65;
+    color: rgba(242,239,232,0.5);
+  }
+
+  /* ─── CLASS SECTION ─── */
+  .class-banner {
+    margin-top: 40px;
+    background: linear-gradient(135deg, var(--mid), var(--ink));
+    border: 1px solid var(--gold-dim);
+    padding: 40px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .class-badge-large {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--gold);
+  }
+
+  .class-info strong {
+    display: block;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .class-info p {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: rgba(242,239,232,0.5);
+    max-width: 420px;
+  }
+
+  /* ─── WISHES ─── */
+  .wishes-list {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .wish-item {
+    background: var(--mid);
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    transition: background 0.25s;
+  }
+  .wish-item:hover { background: rgba(201,168,76,0.07); }
+
+  .wish-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .wish-text {
+    font-size: 1rem;
+    color: rgba(242,239,232,0.75);
+    line-height: 1.6;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    position: relative; z-index: 1;
+    text-align: center;
+    padding: 60px 24px 80px;
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .footer-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .footer-title span {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .footer-from {
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+
+  .footer-year {
+    margin-top: 40px;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    color: rgba(242,239,232,0.2);
+  }
+
+  /* ─── VIDEO MESSAGES SECTION ─── */
+  #video-section {
+    padding: 96px 0;
+    position: relative; z-index: 1;
+    overflow: hidden;
+  }
+
+  #video-section .section-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .vc-stage {
+    position: relative;
+    margin-top: 48px;
+    overflow: hidden;
+    padding-bottom: 4px;
+  }
+
+  .vc-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .vc-track.grabbing { cursor: grabbing; }
+
+  .vc-card {
+    flex: 0 0 min(400px, 82vw);
+    background: var(--mid);
+    border: 1px solid rgba(201,168,76,0.12);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: border-color 0.4s ease, transform 0.45s cubic-bezier(0.4,0,0.2,1), opacity 0.45s ease, box-shadow 0.4s ease;
+    position: relative;
+    opacity: 0.45;
+    transform: scale(0.93);
+    box-shadow: none;
+  }
+
+  .vc-card.active {
+    border-color: var(--gold);
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 40px rgba(201,168,76,0.12);
+  }
+
+  .vc-video-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9/16;
+    max-height: 70vh;
+    background: #000;
+    overflow: hidden;
+  }
+
+  .vc-video-wrap video {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .vc-overlay {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(10,15,30,0.5);
+    transition: opacity 0.3s ease;
+  }
+  .vc-card.playing .vc-overlay { opacity: 0; pointer-events: none; }
+
+  .vc-play-btn {
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.92);
+    border: none;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.2s ease, background 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .vc-play-btn:hover { transform: scale(1.12); background: var(--gold-light); }
+  .vc-play-btn:active { transform: scale(0.96); }
+  .vc-play-btn svg { width: 24px; height: 24px; fill: var(--deep); margin-left: 4px; }
+
+  .vc-loading-bar {
+    position: absolute; bottom: 0; left: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--gold-dim), var(--gold));
+    width: 0%;
+    transition: width 0.3s ease;
+    pointer-events: none;
+  }
+
+  .vc-card-footer {
+    padding: 16px 20px;
+    display: flex; align-items: center; gap: 12px;
+    border-top: 1px solid rgba(201,168,76,0.08);
+  }
+
+  .vc-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gold);
+    min-width: 28px;
+    flex-shrink: 0;
+  }
+
+  .vc-label {
+    font-size: 0.82rem;
+    color: rgba(242,239,232,0.5);
+    letter-spacing: 0.06em;
+  }
+
+  .vc-controls {
+    margin-left: auto;
+    display: flex; gap: 8px; align-items: center;
+  }
+
+  .vc-ctrl-btn {
+    background: none; border: none;
+    color: rgba(242,239,232,0.35);
+    cursor: pointer; padding: 4px;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .vc-ctrl-btn:hover { color: var(--gold); }
+
+  /* Nav */
+  .vc-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+
+  .vc-arrow {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    border: 1px solid var(--gold-dim);
+    background: transparent;
+    color: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    flex-shrink: 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .vc-arrow:hover { background: rgba(201,168,76,0.1); border-color: var(--gold); transform: scale(1.08); }
+  .vc-arrow:active { transform: scale(0.94); }
+  .vc-arrow:disabled { opacity: 0.2; cursor: default; transform: none; }
+
+  .vc-dots {
+    display: flex; gap: 7px; align-items: center; flex-wrap: wrap; justify-content: center;
+    max-width: 260px;
+  }
+  .vc-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold-dim);
+    transition: background 0.3s, transform 0.3s;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .vc-dot.active { background: var(--gold); transform: scale(1.5); }
+
+  .vc-counter {
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    color: var(--gold-dim);
+    margin-top: 14px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .vc-hint {
+    text-align: center;
+    margin-top: 8px;
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    color: rgba(242,239,232,0.15);
+    text-transform: uppercase;
+  }
+
+  /* ─── CREDIT CARD ─── */
+  .vc-credit-card {
+    flex: 0 0 min(400px, 82vw);
+    background: linear-gradient(160deg, #1a2540 0%, #0e1525 100%);
+    border: 1px solid var(--gold-dim);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 40px 28px;
+    text-align: center;
+    opacity: 0.45;
+    transform: scale(0.93);
+    transition: border-color 0.4s ease, transform 0.45s cubic-bezier(0.4,0,0.2,1), opacity 0.45s ease, box-shadow 0.4s ease;
+    box-shadow: inset 0 0 80px rgba(201,168,76,0.04);
+    min-height: min(calc(min(400px,82vw) * 16/9), 70vh);
+  }
+  .vc-credit-card.active {
+    border-color: var(--gold);
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 40px rgba(201,168,76,0.12), inset 0 0 80px rgba(201,168,76,0.04);
+  }
+  .cc-star { font-size: 2.6rem; margin-bottom: 4px; }
+  .cc-top { font-size: 0.6rem; letter-spacing: 0.22em; color: var(--gold-dim); text-transform: uppercase; }
+  .cc-divider { width: 44px; height: 1px; background: linear-gradient(to right, transparent, var(--gold-dim), transparent); margin: 6px 0; }
+  .cc-message { font-size: 0.78rem; color: rgba(242,239,232,0.5); line-height: 1.75; max-width: 250px; font-style: italic; }
+  .cc-divider2 { width: 32px; height: 1px; background: rgba(201,168,76,0.25); margin: 6px 0; }
+  .cc-made-by { font-size: 0.62rem; letter-spacing: 0.18em; color: rgba(242,239,232,0.28); text-transform: uppercase; }
+  .cc-name { font-family: 'Playfair Display', serif; font-size: clamp(1.2rem, 4vw, 1.55rem); font-weight: 900; color: var(--white); line-height: 1.15; }
+  .cc-section { font-size: 0.78rem; color: var(--gold); letter-spacing: 0.08em; }
+  .cc-ai-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(201,168,76,0.07);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 20px; padding: 5px 14px; margin-top: 4px;
+  }
+  .cc-ai-badge span:first-child { font-size: 0.85rem; }
+  .cc-ai-badge span:last-child { font-size: 0.62rem; color: var(--gold-dim); letter-spacing: 0.06em; }
+  .cc-ai-note { font-size: 0.68rem; color: rgba(242,239,232,0.2); font-style: italic; line-height: 1.6; max-width: 220px; }
+  .cc-year { font-size: 0.6rem; letter-spacing: 0.16em; color: rgba(242,239,232,0.12); text-transform: uppercase; margin-top: 4px; }
+
+  /* ─── SCROLL REVEAL ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* stagger */
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div id="preloader">
+  <div class="loader-ring"></div>
+  <div class="loader-text">Loading tribute…</div>
+</div>
+
+<!-- PARTICLE CANVAS -->
+<canvas id="canvas"></canvas>
+
+<!-- ─── HERO ─── -->
+<section id="hero" aria-label="Hero">
+  <div class="hero-badge">Happy Teacher's Day</div>
+  <div class="hero-from">From — Grade 11 Understanding</div>
+  <h1 class="hero-name">
+    Ma'am<br>
+    <span>Marissa Geonzon<br>Diano</span>
+  </h1>
+  <p class="hero-sub">
+    ICT teacher, patient guide,<br>and the reason we actually know what a subnet mask is.
+  </p>
+  <div class="hero-divider"></div>
+  <span class="scroll-cue">↓ scroll ↓</span>
+</section>
+
+<!-- ─── MESSAGE ─── -->
+<section aria-label="Tribute message">
+  <span class="section-label reveal">A message from your class</span>
+  <h2 class="section-title reveal reveal-delay-1">Words that don't<br><em>fit in a group chat</em></h2>
+
+  <div id="message" class="reveal reveal-delay-2">
+    <div class="message-body">
+      <p>Ma'am Marissa — you walked into our classroom and turned a subject that can feel like pure intimidation into something we actually wanted to understand. You never made us feel slow for asking questions. You never made us feel like the board was talking at us instead of to us.</p>
+      <p>ICT became real in your hands — not just theory and acronyms, but things that actually connect to the world outside the gate. You gave us patience when the concept didn't click on the first try, and honesty when we needed to work harder. That combination is rarer than you think.</p>
+      <p>You show up every session with your whole self, and that matters more than we probably say out loud. Today we're saying it loud.</p>
+      <p>Thank you for being our teacher. Thank you for choosing this work. We see the effort behind every lesson, and we will carry what you've taught us well past Grade 11.</p>
+    </div>
+    <div class="message-sig">— 11 Understanding &bull; ICT Class</div>
+  </div>
+</section>
+
+<!-- ─── QUALITIES ─── -->
+<section aria-label="What makes her great">
+  <span class="section-label reveal">What we know about you</span>
+  <h2 class="section-title reveal reveal-delay-1">The things a grade card<br><em>doesn't measure</em></h2>
+
+  <div class="qualities-grid">
+    <div class="quality-card reveal reveal-delay-1">
+      <span class="quality-icon">💡</span>
+      <div class="quality-title">Clarity</div>
+      <p class="quality-desc">You can take a dense concept and land it in three sentences. That skill is harder than it looks and we have all benefited from it.</p>
+    </div>
+    <div class="quality-card reveal reveal-delay-2">
+      <span class="quality-icon">⏳</span>
+      <div class="quality-title">Patience</div>
+      <p class="quality-desc">You've let us ask the same question different ways until something finally clicked, without a single sigh. That says everything.</p>
+    </div>
+    <div class="quality-card reveal reveal-delay-3">
+      <span class="quality-icon">🔍</span>
+      <div class="quality-title">Precision</div>
+      <p class="quality-desc">You catch the exact place where we go wrong — not vaguely "wrong," but <em>specifically</em> wrong — and that's how we actually fix it.</p>
+    </div>
+    <div class="quality-card reveal reveal-delay-4">
+      <span class="quality-icon">🌱</span>
+      <div class="quality-title">Care</div>
+      <p class="quality-desc">You treat us like people first and students second. That makes the classroom a place we want to be in, not just have to be in.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ICT ─── -->
+<section id="ict-section" aria-label="ICT subject">
+  <span class="section-label reveal">Subject — Information and Communications Technology</span>
+  <h2 class="section-title reveal reveal-delay-1">What ICT looks like<br><em>in your classroom</em></h2>
+
+  <div class="ict-grid">
+    <div class="ict-item reveal reveal-delay-1">
+      <div class="ict-num">01</div>
+      <div class="ict-body">
+        <strong>Real concepts, not just theory</strong>
+        <p>You ground every lesson in something we can actually see working — not just a definition on a slide.</p>
+      </div>
+    </div>
+    <div class="ict-item reveal reveal-delay-2">
+      <div class="ict-num">02</div>
+      <div class="ict-body">
+        <strong>No one gets left behind</strong>
+        <p>Slow starters get the same energy as fast ones. The pace is ours and you match it.</p>
+      </div>
+    </div>
+    <div class="ict-item reveal reveal-delay-3">
+      <div class="ict-num">03</div>
+      <div class="ict-body">
+        <strong>Hands that know the tools</strong>
+        <p>We leave your class with actual skills — software, hardware basics, logic. Things that transfer.</p>
+      </div>
+    </div>
+    <div class="ict-item reveal reveal-delay-4">
+      <div class="ict-num">04</div>
+      <div class="ict-body">
+        <strong>Curiosity over compliance</strong>
+        <p>You want us to understand <em>why</em>, not just memorize the right answer for Friday. That difference is the whole lesson.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CLASS ─── -->
+<section aria-label="Our class">
+  <span class="section-label reveal">Who we are</span>
+  <h2 class="section-title reveal reveal-delay-1">Grade 11 Understanding —<br><em>your class</em></h2>
+
+  <div class="class-banner reveal reveal-delay-2">
+    <div class="class-badge-large">11<br>U</div>
+    <div class="class-info">
+      <strong>Grade 11 — Understanding Section</strong>
+      <p>We are a room full of different people who share one classroom and one teacher who makes it feel like it belongs to all of us equally. That's your doing, Ma'am. We see it every day, even when we don't say it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WISHES ─── -->
+<section aria-label="Wishes for teacher">
+  <span class="section-label reveal">For you, today and every day</span>
+  <h2 class="section-title reveal reveal-delay-1">Wishes from<br><em>11 Understanding</em></h2>
+
+  <div class="wishes-list">
+    <div class="wish-item reveal reveal-delay-1">
+      <div class="wish-dot"></div>
+      <div class="wish-text">Rest that actually feels like rest — you give so much of yourself every week.</div>
+    </div>
+    <div class="wish-item reveal reveal-delay-2">
+      <div class="wish-dot"></div>
+      <div class="wish-text">Students who make this worth it — and we hope that sometimes that list includes us.</div>
+    </div>
+    <div class="wish-item reveal reveal-delay-3">
+      <div class="wish-dot"></div>
+      <div class="wish-text">Recognition that matches the work you put in — inside and outside the classroom.</div>
+    </div>
+    <div class="wish-item reveal reveal-delay-4">
+      <div class="wish-dot"></div>
+      <div class="wish-text">A Teacher's Day that actually feels as good as the ones you make for us all year.</div>
+    </div>
+    <div class="wish-item reveal">
+      <div class="wish-dot"></div>
+      <div class="wish-text">Good health, happiness, and every good thing. You deserve them without condition.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── VIDEO MESSAGES ─── -->
+<section id="video-section" aria-label="Video messages">
+  <div class="section-inner">
+    <span class="section-label reveal">From the class — in their own words</span>
+    <h2 class="section-title reveal reveal-delay-1">Video messages<br><em>to Ma'am Marissa</em></h2>
+  </div>
+
+  <div class="vc-stage reveal reveal-delay-2">
+    <div class="vc-track" id="vcTrack"></div>
+  </div>
+
+  <div class="section-inner">
+    <div class="vc-nav">
+      <button class="vc-arrow" id="vcPrev" aria-label="Previous">&#8592;</button>
+      <div class="vc-dots" id="vcDots"></div>
+      <button class="vc-arrow" id="vcNext" aria-label="Next">&#8594;</button>
+    </div>
+    <div class="vc-counter" id="vcCounter"></div>
+    <div class="vc-hint">swipe or drag &bull; tap to play</div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-title reveal">Happy Teacher's Day,<br><span>Ma'am Marissa.</span></div>
+  <div class="footer-from reveal reveal-delay-1">With gratitude — Grade 11 Understanding &bull; ICT</div>
+  <div class="footer-year reveal reveal-delay-2">Teacher's Day &bull; 2026</div>
+</footer>
+
+<script>
+// preloader handled by inline head script
+
+// ─── PARTICLE SYSTEM ───
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [];
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+class Particle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * W;
+    this.y = Math.random() * H + H;
+    this.r = Math.random() * 1.5 + 0.3;
+    this.speed = Math.random() * 0.4 + 0.15;
+    this.drift = (Math.random() - 0.5) * 0.3;
+    this.alpha = Math.random() * 0.5 + 0.1;
+    this.color = Math.random() > 0.6 ? '#C9A84C' : '#E8C97A';
+  }
+  update() {
+    this.y -= this.speed;
+    this.x += this.drift;
+    if (this.y < -10) this.reset();
+  }
+  draw() {
+    ctx.save();
+    ctx.globalAlpha = this.alpha;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+    ctx.fillStyle = this.color;
+    ctx.fill();
+    ctx.restore();
+  }
+}
+
+for (let i = 0; i < 90; i++) {
+  const p = new Particle();
+  p.y = Math.random() * H; // scatter on first frame
+  particles.push(p);
+}
+
+function animateParticles() {
+  ctx.clearRect(0, 0, W, H);
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+// ─── VIDEO CAROUSEL ───
+(function () {
+  // Hardcoded video URLs — shuffled randomly each load
+  const RAW_URLS = [
+    'https://github.com/july20delete-cpu/Subbb/raw/refs/heads/main/Messenger_creation_1376298107820847.mp4',
+    'https://github.com/july20delete-cpu/Subbb/raw/refs/heads/main/Messenger_creation_1413536160973575.mp4',
+    'https://github.com/july20delete-cpu/Subbb/raw/refs/heads/main/Messenger_creation_1576599917626256.mp4',
+    'https://github.com/july20delete-cpu/Subbb/raw/refs/heads/main/Messenger_creation_1646267046862515.mp4',
+    'https://github.com/july20delete-cpu/Subbb/raw/refs/heads/main/Messenger_creation_1652428926225270.mp4',
+    'https://github.com/july20delete-cpu/Subbb/raw/refs/heads/main/Messenger_creation_1669882604560130.mp4',
+    'https://github.com/july20delete-cpu/Subbb/raw/refs/heads/main/Messenger_creation_1798954757984902.mp4',
+    'https://github.com/july20delete-cpu/Subbb/raw/refs/heads/main/Messenger_creation_1807283917157589.mp4',
+    'https://github.com/july20delete-cpu/Subbb/raw/refs/heads/main/Messenger_creation_1913137106762574.mp4',
+    'https://github.com/july20delete-cpu/Subbb/raw/refs/heads/main/Messenger_creation_2005657590121394.mp4',
+    'https://github.com/july20delete-cpu/Subbb/raw/refs/heads/main/Messenger_creation_2170326357223724.mp4',
+    'https://github.com/july20delete-cpu/Subbb/raw/refs/heads/main/Messenger_creation_2198478110735240.mp4',
+    'https://github.com/july20delete-cpu/Subbb/raw/refs/heads/main/Messenger_creation_2498263707320018.mp4',
+    'https://github.com/july20delete-cpu/Subbb/raw/refs/heads/main/Messenger_creation_2591996364614182.mp4',
+    'https://github.com/july20delete-cpu/Subbb/raw/refs/heads/main/Messenger_creation_3017981718541652.mp4',
+    'https://github.com/july20delete-cpu/Subbb/raw/refs/heads/main/Messenger_creation_4584135881807903.mp4',
+    'https://github.com/july20delete-cpu/Subbb/raw/refs/heads/main/VID20261008185021.mp4',
+  ];
+
+  // Fisher-Yates shuffle
+  function shuffle(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  const VIDEOS = shuffle(RAW_URLS);
+  const TOTAL  = VIDEOS.length;
+
+  const track   = document.getElementById('vcTrack');
+  const dotsEl  = document.getElementById('vcDots');
+  const counter = document.getElementById('vcCounter');
+  const prevBtn = document.getElementById('vcPrev');
+  const nextBtn = document.getElementById('vcNext');
+
+  let current = 0;
+  let isDrag = false, startX = 0, lastX = 0, vel = 0, moved = false;
+
+  // ── Build cards ──
+  VIDEOS.forEach((url, i) => {
+    const card = document.createElement('div');
+    card.className = 'vc-card';
+
+    // Video wrap
+    const wrap = document.createElement('div');
+    wrap.className = 'vc-video-wrap';
+
+    const vid = document.createElement('video');
+    vid.src = url;
+    vid.preload = 'none';
+    vid.playsInline = true;
+    vid.controls = false;
+    vid.setAttribute('playsinline', '');
+    vid.setAttribute('webkit-playsinline', '');
+
+    const bar = document.createElement('div');
+    bar.className = 'vc-loading-bar';
+
+    const overlay = document.createElement('div');
+    overlay.className = 'vc-overlay';
+
+    const playBtn = document.createElement('button');
+    playBtn.className = 'vc-play-btn';
+    playBtn.setAttribute('aria-label', 'Play');
+    playBtn.innerHTML = `<svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>`;
+
+    playBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      if (vid.paused) {
+        // pause everyone else
+        track.querySelectorAll('video').forEach(v => {
+          if (v !== vid) { v.pause(); v.closest('.vc-card').classList.remove('playing'); }
+        });
+        vid.play().catch(() => {});
+        card.classList.add('playing');
+      } else {
+        vid.pause();
+        card.classList.remove('playing');
+      }
+    });
+
+    vid.addEventListener('ended',   () => card.classList.remove('playing'));
+    vid.addEventListener('waiting', () => { bar.style.width = '55%'; });
+    vid.addEventListener('canplay', () => { bar.style.width = '100%'; setTimeout(() => bar.style.width = '0%', 500); });
+    vid.addEventListener('error',   () => { bar.style.width = '0%'; });
+
+    overlay.appendChild(playBtn);
+    wrap.append(vid, bar, overlay);
+
+    // Footer
+    const footer = document.createElement('div');
+    footer.className = 'vc-card-footer';
+
+    const num = document.createElement('div');
+    num.className = 'vc-num';
+    num.textContent = String(i + 1).padStart(2, '0');
+
+    const label = document.createElement('div');
+    label.className = 'vc-label';
+    label.textContent = 'Message to Ma\'am Marissa';
+
+    // fullscreen button
+    const ctrl = document.createElement('div');
+    ctrl.className = 'vc-controls';
+    const fsBtn = document.createElement('button');
+    fsBtn.className = 'vc-ctrl-btn';
+    fsBtn.setAttribute('aria-label', 'Fullscreen');
+    fsBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>`;
+    fsBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      const el = vid;
+      if (el.requestFullscreen) el.requestFullscreen();
+      else if (el.webkitEnterFullscreen) el.webkitEnterFullscreen(); // iOS
+      else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+    });
+    ctrl.appendChild(fsBtn);
+
+    footer.append(num, label, ctrl);
+    card.append(wrap, footer);
+    track.appendChild(card);
+
+    // Dot
+    const dot = document.createElement('div');
+    dot.className = 'vc-dot';
+    dot.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(dot);
+  });
+
+  // ── Credit card ──
+  const creditCard = document.createElement('div');
+  creditCard.className = 'vc-credit-card';
+  creditCard.innerHTML = `
+    <div class="cc-star">🎓</div>
+    <div class="cc-top">All messages watched</div>
+    <div class="cc-divider"></div>
+    <div class="cc-message">Ma'am Marissa — every concept that finally clicked, every time you stayed patient, every lesson you gave us with your whole self. That's yours to keep. Thank you for choosing to teach.</div>
+    <div class="cc-divider2"></div>
+    <div class="cc-made-by">This page was made by</div>
+    <div class="cc-name">Alegres Christian Jesus</div>
+    <div class="cc-section">Grade 11 — Understanding · ICT</div>
+    <div class="cc-divider2"></div>
+    <div class="cc-ai-badge"><span>🤖</span><span>Made with a help of AI — Claude by Anthropic</span></div>
+    <div class="cc-ai-note">The words are real. The feeling is real.<br>AI just helped build the stage.</div>
+    <div class="cc-year">Teacher's Day · 2026</div>
+  `;
+  track.appendChild(creditCard);
+
+  // dot for credit card
+  const creditDot = document.createElement('div');
+  creditDot.className = 'vc-dot';
+  creditDot.addEventListener('click', () => goTo(TOTAL));
+  dotsEl.appendChild(creditDot);
+
+  const TOTAL_WITH_CREDIT = TOTAL + 1;
+
+  // ── Layout helpers ──
+  function cardW() {
+    const c = track.querySelector('.vc-card');
+    return c ? c.offsetWidth + 20 : 420;
+  }
+
+  function stageW() {
+    return document.querySelector('.vc-stage').offsetWidth;
+  }
+
+  function computeOffset(idx) {
+    const cw = cardW(), sw = stageW();
+    return -(idx * cw) + sw / 2 - cw / 2;
+  }
+
+  function applyOffset(offset, animate) {
+    if (!animate) track.style.transition = 'none';
+    track.style.transform = `translateX(${offset}px)`;
+    if (!animate) requestAnimationFrame(() => { track.style.transition = ''; });
+  }
+
+  function goTo(idx, animate = true) {
+    // pause video on current card
+    const allCards = track.children;
+    const prevCard = allCards[current];
+    if (prevCard) {
+      const v = prevCard.querySelector('video');
+      if (v) { v.pause(); prevCard.classList.remove('playing'); }
+    }
+
+    current = Math.max(0, Math.min(idx, TOTAL_WITH_CREDIT - 1));
+
+    Array.from(allCards).forEach((c, i) => c.classList.toggle('active', i === current));
+    dotsEl.querySelectorAll('.vc-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === TOTAL_WITH_CREDIT - 1;
+    counter.textContent = current === TOTAL ? '✦ credits' : `${current + 1} / ${TOTAL}`;
+    applyOffset(computeOffset(current), animate);
+  }
+
+  prevBtn.addEventListener('click', () => goTo(current - 1));
+  nextBtn.addEventListener('click', () => goTo(current + 1));
+
+  // ── Drag & Swipe ──
+  function pX(e) { return e.touches ? e.touches[0].clientX : e.clientX; }
+
+  track.addEventListener('mousedown',  e => { isDrag=true; moved=false; startX=lastX=pX(e); vel=0; track.classList.add('grabbing'); track.style.transition='none'; });
+  track.addEventListener('touchstart', e => { isDrag=true; moved=false; startX=lastX=pX(e); vel=0; track.style.transition='none'; }, { passive: true });
+
+  window.addEventListener('mousemove', e => {
+    if (!isDrag) return;
+    const x = pX(e), dx = x - startX;
+    vel = x - lastX; lastX = x;
+    if (Math.abs(dx) > 5) moved = true;
+    track.style.transform = `translateX(${computeOffset(current) + dx}px)`;
+  });
+  window.addEventListener('touchmove', e => {
+    if (!isDrag) return;
+    const x = pX(e), dx = x - startX;
+    vel = x - lastX; lastX = x;
+    if (Math.abs(dx) > 5) moved = true;
+    track.style.transform = `translateX(${computeOffset(current) + dx}px)`;
+  }, { passive: true });
+
+  function pointerUp() {
+    if (!isDrag) return;
+    isDrag = false;
+    track.classList.remove('grabbing');
+    track.style.transition = '';
+    if (!moved) return;
+    const threshold = cardW() * 0.22;
+    const dx = lastX - startX;
+    if (dx < -threshold && current < TOTAL_WITH_CREDIT - 1) goTo(current + 1);
+    else if (dx > threshold && current > 0) goTo(current - 1);
+    else goTo(current);
+  }
+  window.addEventListener('mouseup',  pointerUp);
+  window.addEventListener('touchend', pointerUp);
+
+  // prevent accidental card click during drag
+  track.addEventListener('click', e => { if (moved) e.stopPropagation(); }, true);
+
+  // keyboard
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft')  goTo(current - 1);
+    if (e.key === 'ArrowRight') goTo(current + 1);
+  });
+
+  window.addEventListener('resize', () => applyOffset(computeOffset(current), false));
+
+  // init
+  goTo(0, false);
+})();
+
+// ─── SCROLL REVEAL ───
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+revealEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
